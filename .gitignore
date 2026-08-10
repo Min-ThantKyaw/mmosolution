@@ -1,0 +1,30 @@
+# Dependencies / build output
+node_modules/
+dist/
+build/
+
+# Env & secrets — never commit
+.env
+.env.local
+.env.*.local
+*.env
+!*.env.example
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# Prisma (client is generated into node_modules; keep nothing here)
+server/prisma/*.db
+server/prisma/*.db-journal
+
+# Prisma 7 generated client (regenerated via `postinstall: prisma generate`)
+server/src/generated/
+.reasonix
