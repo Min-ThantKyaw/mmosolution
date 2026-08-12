@@ -1,0 +1,35 @@
+model User {
+  id    String  @id @default(cuid())
+  name String
+  username String @unique
+  email String  @unique
+  password String
+
+  role Role @default(READER)
+
+  avatar String?
+  bio String?
+
+  isActive Boolean @default(true)
+  isBanned Boolean @default(false)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  deletedAt DateTime?
+
+  //Relationships
+  posts Post[]
+  comments Comment[]
+//   bookmarks Bookmark[]
+// 
+//   createdTopics Topic[] @relation("CreatedTopics")
+// 
+//   followers Follower[] @relation("Followers")
+//   following Follower[] @relation("Following")
+}
+
+enum Role {
+  ADMIN
+  READER
+  WRITER
+}
