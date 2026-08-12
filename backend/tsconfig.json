@@ -5,11 +5,11 @@
     "moduleResolution": "NodeNext",              /* Required to match module settings */
     "lib": ["ES2022"],                           /* Specify library files to be included */
     "outDir": "./dist",                          /* Redirect output structure to the directory */
-    "rootDir": "./backend",                      /* Match your project structure (pointing to backend folder) */
+    "rootDir": "./src",                          /* Point to the source directory */
     "strict": true,                              /* Enable all strict type-checking options */
     "esModuleInterop": true,                     /* Emits additional JavaScript to ease importing CommonJS modules */
     "skipLibCheck": true,                        /* Skip type checking of declaration files */
     "forceConsistentCasingInFileNames": true     /* Disallow inconsistently-cased references to the same file */
   },
-  "include": ["backend/**/*"]                    /* Include all files inside your backend folder */
+  "include": ["src/**/*"]                       /* Include all files inside the src folder */
 }
