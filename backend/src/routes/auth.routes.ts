@@ -1,11 +1,9 @@
 import { Router } from "express";
+import { register } from "../controllers/auth/auth.controller.js";
 
 const router = Router();
-// const authController = new AuthController()
 
-router.post('/register');
-router.post('/login');
-router.post('/forgot-password');
-router.post('/reset-password');
-router.post('/logout');
-router.get('/me'); // get current login user info
+router.post("/register", register);
+// TODO: login, forgot-password, reset-password, logout, me
+
+export default router;
