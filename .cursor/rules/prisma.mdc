@@ -1,0 +1,12 @@
+---
+description: Prisma schema and migration rules
+globs: backend/prisma/**
+alwaysApply: false
+---
+
+# Prisma rules — backend/prisma/**
+
+- Apply schema changes only through Prisma migrations: `npx prisma migrate dev`.
+- Never hand-edit migration files.
+- After schema changes, regenerate the client with `npx prisma generate`.
+- Never edit the generated client under `backend/src/generated/`.

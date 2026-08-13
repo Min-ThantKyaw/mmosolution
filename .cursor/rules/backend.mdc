@@ -1,0 +1,14 @@
+---
+description: Backend (Express 5 + TypeScript) development rules
+globs: backend/**
+alwaysApply: false
+---
+
+# Backend rules — backend/**
+
+- Express 5 + TypeScript, ESM (`"type": "module"`). Strict types everywhere — no `any`.
+- Layering: `routes/` → `controllers/` → `services/`; keep controllers thin, put business logic in services.
+- Validate request bodies and env vars with Zod before use.
+- API errors: `{ "error": { "message": string, "code": string } }` with a proper HTTP status.
+- Database access only through Prisma — no raw SQL unless justified.
+- Naming: kebab-case files, camelCase functions/variables, PascalCase classes.
