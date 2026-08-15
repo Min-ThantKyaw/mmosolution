@@ -29,6 +29,16 @@ architecture changes.**
 - Keep the client talking to the API only through the typed client under `client/src/api/`.
 - No new major dependency without recording it in [docs/DECISIONS.md](docs/DECISIONS.md).
 
+## Area-specific rules
+
+General rules above apply everywhere. Scoped rules live in
+[`.cursor/rules/*.mdc`](.cursor/rules/) and apply automatically when editing
+matching files (tools that support glob-scoped rules, e.g. Cursor, Claude Code):
+
+- [`.cursor/rules/backend.mdc`](.cursor/rules/backend.mdc) — applies to `backend/**`
+- [`.cursor/rules/prisma.mdc`](.cursor/rules/prisma.mdc) — applies to `backend/prisma/**`
+- [`.cursor/rules/generated.mdc`](.cursor/rules/generated.mdc) — applies to `backend/src/generated/**`
+
 ## Docs
 
 - [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) — system design (data model, API contract, auth flow)

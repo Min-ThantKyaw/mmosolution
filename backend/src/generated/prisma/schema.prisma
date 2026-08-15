@@ -1,0 +1,92 @@
+model Comment {
+  id      Int    @id @default(autoincrement())
+  content String
+  userId  Int
+  postId  Int
+
+  user User @relation(fields: [userId], references: [id])
+  post Post @relation(fields: [postId], references: [id])
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+}
+
+model Post {
+  id Int @id @default(autoincrement())
+
+  title   String
+  slug    String @unique
+  content String
+
+  thumbnail String?
+
+  status PostStatus @default(DRAFT)
+
+  viewCount Int @default(0)
+
+  authorId Int
+  author   User @relation(fields: [authorId], references: [id])
+
+  comments Comment[]
+  // bookmarks   Bookmark[]
+  // views       PostView[]
+
+  // topics      PostTopic[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+enum PostStatus {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+  BANNED
+}
+
+model User {
+  id       Int    @id @default(autoincrement())
+  name     String
+  username String @unique
+  email    String @unique
+  password String
+
+  role Role @default(READER)
+
+  avatar String?
+  bio    String?
+
+  isActive Boolean @default(true)
+  isBanned Boolean @default(false)
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+
+  //Relationships
+  posts    Post[]
+  comments Comment[]
+  //   bookmarks Bookmark[]
+  // 
+  //   createdTopics Topic[] @relation("CreatedTopics")
+  // 
+  //   followers Follower[] @relation("Followers")
+  //   following Follower[] @relation("Following")
+}
+
+enum Role {
+  ADMIN
+  READER
+  WRITER
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+  // importFileExtensions = "ts"
+}
