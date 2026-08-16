@@ -11,6 +11,11 @@ export interface RegisterInput {
   password: string;
 }
 
+export interface LoginInput {
+  email: string;
+  password: string;
+}
+
 export interface AuthResponse {
   user: {
     id: number;
