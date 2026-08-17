@@ -10,19 +10,24 @@ if (!JWT_SECRET) {
 
 export interface JwtPayload {
   userId: number;
-  email: string;
+  role: "ADMIN" | "WRITER" | "READER";
 }
 
 export const signToken = (payload: JwtPayload): string =>
   jwt.sign(
-    payload, 
-    JWT_SECRET!, 
-    { 
-      expiresIn: JWT_EXPIRES_IN as jwt.SignOptions["expiresIn"], 
-      algorithm: "HS256" 
+    payload,
+    JWT_SECRET!,
+    {
+      expiresIn: JWT_EXPIRES_IN as jwt.SignOptions["expiresIn"],
+      algorithm: "HS256"
     }
   );
 
 
 export const verifyToken = (token: string): JwtPayload =>
-  jwt.verify(token, JWT_SECRET, { algorithms: ["HS256"] }) as JwtPayload;
+  jwt.verify(
+    token,
+    JWT_SECRET,
+    {
+      algorithms: ["HS256"]
+    }) as JwtPayload;
