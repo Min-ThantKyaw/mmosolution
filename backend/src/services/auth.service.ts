@@ -10,7 +10,7 @@ export const registerUser = async (input: RegisterInput): Promise<AuthResponse> 
   });
 
   if (existing) {
-    throw new HttpError(400, "VALIDATION", "Email or username already in use");
+    throw new HttpError(409, "Validation","Email or username already exists");
   }
 
   const hashedPassword = await bcrypt.hash(input.password, 10);
