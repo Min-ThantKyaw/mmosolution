@@ -4,10 +4,6 @@ import { signToken } from "../utils/jwt.js";
 import { HttpError } from "../utils/http-error.js";
 import type { RegisterInput, LoginInput, AuthResponse } from "../types/user.types.js";
 
-// Compared against when the email is unknown so both login failure paths take
-// ~the same time — prevents user enumeration via response timing.
-const DUMMY_PASSWORD_HASH = bcrypt.hashSync("not-a-real-password", 10);
-
 export const registerUser = async (input: RegisterInput): Promise<AuthResponse> => {
   const existing = await prisma.user.findFirst({
     where: { OR: [{ email: input.email }, { username: input.username }] },
@@ -28,11 +24,11 @@ export const registerUser = async (input: RegisterInput): Promise<AuthResponse> 
     },
   });
 
-  const token = signToken({ userId: user.id, email: user.email });
+  const accessToken = signToken({ userId: user.id, role: user.role });
 
   return {
-    user: { id: user.id, name: user.name, username: user.username, email: user.email },
-    token,
+    user: { id: user.id, name: user.name, username: user.username, email: user.email, role: user.role },
+    accessToken,
   };
 };
 
