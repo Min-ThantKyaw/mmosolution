@@ -1,7 +1,9 @@
 import jwt from "jsonwebtoken";
 
 const JWT_SECRET = process.env.JWT_SECRET;
-const JWT_EXPIRES_IN = process.env.JWT_EXPIRES;
+const JWT_EXPIRES_IN = parseInt(process.env.JWT_EXPIRES_IN || '3600');
+
+console.log(JWT_EXPIRES_IN)
 
 // Fail fast instead of signing with a weak default secret.
 if (!JWT_SECRET) {
@@ -18,7 +20,7 @@ export const signToken = (payload: JwtPayload): string =>
     payload,
     JWT_SECRET!,
     {
-      expiresIn: JWT_EXPIRES_IN as jwt.SignOptions["expiresIn"],
+      expiresIn: JWT_EXPIRES_IN,
       algorithm: "HS256"
     }
   );
