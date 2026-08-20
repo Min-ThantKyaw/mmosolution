@@ -58,6 +58,26 @@ The frontend is a static Vite SPA in `web/` — no server needed, so Vercel is a
 **Backend note:** point `VITE_API_URL` at your deployed backend and set the backend's
 `CORS_ORIGIN` to the Vercel URL (e.g. `https://my-app.vercel.app`).
 
+## Deployment (Backend → Render)
+
+The API is an Express + Prisma server, so it needs a long-running host — Render is a good fit.
+
+**Easiest:** the repo ships a [`render.yaml`](render.yaml) Blueprint. Import it at
+[dashboard.render.com/blueprints](https://dashboard.render.com/blueprints) — it provisions
+the web service **and** a PostgreSQL database, wires `DATABASE_URL`, and generates `JWT_SECRET`.
+After provisioning, set `CORS_ORIGIN` in the dashboard to your Vercel URL.
+
+**Manual (dashboard):**
+
+1. **New → Web Service** → connect the GitHub repo.
+2. Root directory: `backend`.
+3. Build command: `npm install && npx prisma generate && npx prisma migrate deploy && npm run build`
+4. Start command: `npm start`
+5. Env vars: `DATABASE_URL` (Render Postgres connection string), `JWT_SECRET` (random), `JWT_EXPIRES_IN=3600`, `CORS_ORIGIN=<vercel-url>`. Render injects `PORT` itself; `HOST` defaults to `0.0.0.0` in code, so no need to set it.
+6. Health check path: `/`
+
+Migrations are applied automatically during the build (`npx prisma migrate deploy`).
+
 ## Documentation
 
 - [Architecture](docs/ARCHITECTURE.md) — system design, data model, API contract
