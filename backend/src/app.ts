@@ -8,7 +8,9 @@ import { authorize } from "./middlewares/role.middleware.js";
 
 const app: Express = express();
 const port: number = process.env.PORT ? parseInt(process.env.PORT, 10) : 3000;
-const host: string = process.env.HOST || "localhost";
+// Bind all interfaces so cloud hosts (Render, Railway) can route traffic;
+// they do not set HOST themselves and require 0.0.0.0.
+const host: string = process.env.HOST || "0.0.0.0";
 
 // Comma-separated list of allowed origins, e.g. "http://localhost:5173,https://my-app.vercel.app"
 const corsOrigins: string[] = (process.env.CORS_ORIGIN ?? "http://localhost:5173")
