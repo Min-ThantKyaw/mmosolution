@@ -1,37 +1,18 @@
-import { createContext, useContext, useState } from "react";
-const ThemeContext = createContext();
-export default function App() {
-const [theme, setTheme] = useState("light");
-return (
-<ThemeContext.Provider value={{ theme, setTheme }}>
-<div
-style={{
-minHeight: 400,
-color: "green",
-padding: 20,
-background:
-theme === "light"
-? "lightblue"
-: "darkblue",
-}}>
-<Header />
-</div>
-</ThemeContext.Provider>
-);
-}
-function Header() {
-return <Title />;
-}
-function Title() {
-const { theme, setTheme } = useContext(ThemeContext);
-return (
-<div>
-<h1>Hello Context</h1>
-<button onClick={() => {
-setTheme(
-theme === "light" ? "dark" : "light"
-)
-}}>Toggle Theme</button>
-</div>
-);
-}
+import {
+ Routes,
+ Route,
+ useParams,
+ useNavigate,
+} from "react-router-dom";
+import Footer from "./components/layout/Footer.tsx";
+import Navbar from "./components/layout/Navbar.tsx";
+
+export default function App(){
+ const navigate = useNavigate();
+ return (
+   <div>
+     <Navbar/>
+    <Footer/>
+ </div>
+ );
+};
