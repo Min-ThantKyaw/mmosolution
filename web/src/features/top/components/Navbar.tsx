@@ -5,7 +5,7 @@ const Navbar = () => {
         <div className="max-w-[1400px] mx-auto px-5 py-4 flex items-center justify-between">
    
             <a href="#" className="font-serif text-3xl font-bold tracking-tight text-brand-text">
-                SellerHub.
+                OSolutions.
             </a>
 
        
