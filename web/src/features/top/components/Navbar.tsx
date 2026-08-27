@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Navbar = () => {
 	return (
 		<>
@@ -15,7 +17,7 @@ const Navbar = () => {
                     <a href="#" className="hover:text-brand-green transition-colors">Marketing Tips</a>
                     <a href="#" className="hover:text-brand-green transition-colors">Success Stories</a>
                     <a href="#" className="hover:text-brand-green transition-colors">Write</a>
-                    <a href="#" className="hover:text-brand-green transition-colors">Sign in</a>
+                    <Link to="/login" className="hover:text-brand-green transition-colors">Sign in</Link>
                 </nav>
 
 
