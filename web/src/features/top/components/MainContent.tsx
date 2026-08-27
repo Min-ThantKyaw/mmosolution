@@ -3,7 +3,7 @@ const MainContent = () => {
 		<>
     <main className="flex-grow flex flex-col border-b border-brand relative overflow-hidden">
         <div className="max-w-[1400px] mx-auto w-full grid grid-cols-1 lg:grid-cols-[60%_40%] flex-grow items-stretch relative">
-            <div className="px-5 py-16 lg:py-32 flex flex-col justify-center z-10 lg:border-r lg:border-brand">
+            <div className="px-5 py-4 lg:py-4 flex flex-col justify-center z-10 lg:border-r lg:border-brand">
                 <h1 className="font-serif text-6xl md:text-8xl lg:text-[7rem] leading-[1.05] tracking-tight mb-8">
                     E-commerce <br/>
                     strategies <span className="font-sans text-5xl md:text-7xl lg:text-[6rem] font-light">&</span> insights
