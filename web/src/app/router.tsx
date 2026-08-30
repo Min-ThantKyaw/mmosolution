@@ -3,7 +3,7 @@ import {
 } from "react-router-dom";
 
 // import HomePage from "../features/posts/pages/HomePage";
-import LoginPage from "../features/auth/pages/LoginPage";
+import LoginPage from "../features/auth/pages/Login";
 // import RegisterPage from "../features/auth/pages/RegisterPage";
 // 
 // import BookmarksPage from "../features/bookmarks/pages/BookmarksPage";
