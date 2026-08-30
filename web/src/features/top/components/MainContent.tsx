@@ -1,11 +1,4 @@
-import AuthModal from "../../auth/components/AuthModal";
-
-type MainContentProps = {
-	isAuthModalOpen: boolean;
-	onCloseAuthModal: () => void;
-};
-
-const MainContent = ({ isAuthModalOpen, onCloseAuthModal }: MainContentProps) => {
+const MainContent = () => {
 	return (
 		<>
     <main className="flex-grow flex flex-col border-b border-brand relative overflow-hidden">
@@ -28,12 +21,12 @@ const MainContent = ({ isAuthModalOpen, onCloseAuthModal }: MainContentProps) =>
             <div className="hidden lg:flex items-end justify-center relative bg-brand-bg px-5 pt-10">
                 <svg width="100%" height="100%" viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg" className="max-h-[600px] w-auto origin-bottom-right">
                     
-                    <path d="M300 450 L150 363.39 L150 190.19 L300 103.58 L450 190.19 L450 363.39 Z" fill="#10B981" fillOpacity="0.1"/>
-                    <path d="M300 450 L150 363.39 L150 190.19 L300 103.58 L450 190.19 L450 363.39 Z" stroke="#10B981" strokeWidth="3" strokeLinejoin="round"/>
-                    <path d="M150 190.19 L300 276.8 L450 190.19" stroke="#10B981" strokeWidth="3" strokeLinejoin="round"/>
-                    <path d="M300 276.8 L300 450" stroke="#10B981" strokeWidth="3" strokeLinejoin="round"/>
+                    <path d="M300 450 L150 363.39 L150 190.19 L300 103.58 L450 190.19 L450 363.39 Z" fill="#10B981" fill-opacity="0.1"/>
+                    <path d="M300 450 L150 363.39 L150 190.19 L300 103.58 L450 190.19 L450 363.39 Z" stroke="#10B981" stroke-width="3" stroke-linejoin="round"/>
+                    <path d="M150 190.19 L300 276.8 L450 190.19" stroke="#10B981" stroke-width="3" stroke-linejoin="round"/>
+                    <path d="M300 276.8 L300 450" stroke="#10B981" stroke-width="3" stroke-linejoin="round"/>
 
-                    <path d="M 50 500 C 150 500, 150 350, 250 300 S 350 100, 550 50" stroke="#242424" strokeWidth="4" strokeDasharray="10 10" fill="none"/>
+                    <path d="M 50 500 C 150 500, 150 350, 250 300 S 350 100, 550 50" stroke="#242424" stroke-width="4" stroke-dasharray="10 10" fill="none"/>
                     
                     <path d="M400 100 C500 100 520 200 520 200 C520 200 450 250 400 250 C350 250 330 150 330 150 C330 150 300 100 400 100 Z" fill="#10B981"/>
                     
@@ -60,7 +53,6 @@ const MainContent = ({ isAuthModalOpen, onCloseAuthModal }: MainContentProps) =>
             </div>
         </div>
     </main>
-    <AuthModal isOpen={isAuthModalOpen} onClose={onCloseAuthModal} />
 		</>
 	)
 }

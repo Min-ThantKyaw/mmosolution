@@ -1,10 +1,6 @@
 import { Link } from "react-router-dom";
 
-type NavbarProps = {
-	onOpenAuthModal: () => void;
-};
-
-const Navbar = ({ onOpenAuthModal }: NavbarProps) => {
+const Navbar = () => {
 	return (
 		<>
 			 <header className="border-b border-brand sticky top-0 bg-brand-bg z-50">
@@ -21,9 +17,7 @@ const Navbar = ({ onOpenAuthModal }: NavbarProps) => {
                     <a href="#" className="hover:text-brand-green transition-colors">Marketing Tips</a>
                     <a href="#" className="hover:text-brand-green transition-colors">Success Stories</a>
                     <a href="#" className="hover:text-brand-green transition-colors">Write</a>
-                    <button type="button" onClick={onOpenAuthModal} className="hover:text-brand-green transition-colors">
-                        Sign in
-                    </button>
+                    <a href="#" className="hover:text-brand-green transition-colors">Sign in</a>
                 </nav>
 
 
