@@ -1,6 +1,11 @@
 import { Link } from "react-router-dom";
 
-const Navbar = () => {
+interface NavbarProps {
+    onLogin: () => void;
+    onRegister: () => void;
+}
+
+const Navbar = ({onLogin, onRegister}: NavbarProps) => {
 	return (
 		<>
 			 <header className="border-b border-brand sticky top-0 bg-brand-bg z-50">
@@ -17,13 +22,13 @@ const Navbar = () => {
                     <a href="#" className="hover:text-brand-green transition-colors">Marketing Tips</a>
                     <a href="#" className="hover:text-brand-green transition-colors">Success Stories</a>
                     <a href="#" className="hover:text-brand-green transition-colors">Write</a>
-                    <a href="#" className="hover:text-brand-green transition-colors">Sign in</a>
+                    <button onClick={onLogin} className="hover:text-brand-green transition-colors">Sign in</button>
                 </nav>
 
 
-                <a href="#" className="bg-brand-text text-white px-5 py-2 rounded-full text-sm font-medium hover:bg-black transition-colors">
+                <button onClick={onRegister} className="bg-brand-text text-white px-5 py-2 rounded-full text-sm font-medium hover:bg-black transition-colors">
                     Join Community
-                </a>
+                </button>
             </div>
         </div>
     </header>

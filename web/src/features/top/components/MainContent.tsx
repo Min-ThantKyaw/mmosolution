@@ -1,4 +1,11 @@
-const MainContent = () => {
+import AuthModal from "../../auth/components/AuthModal";
+interface AuthFormProps {
+    isOpen: boolean
+    onClose: () => void;
+    mode: 'login' | 'register';
+    onModeChange: (mode: 'login' | 'register') => void;
+}
+const MainContent = ({ isOpen, onClose, mode, onModeChange }: AuthFormProps) => {
 	return (
 		<>
     <main className="flex-grow flex flex-col border-b border-brand relative overflow-hidden">
@@ -53,6 +60,12 @@ const MainContent = () => {
             </div>
         </div>
     </main>
+    <AuthModal
+        isOpen={isOpen}
+        onClose={onClose}
+        mode={mode}
+        onModeChange={onModeChange}
+    />
 		</>
 	)
 }
