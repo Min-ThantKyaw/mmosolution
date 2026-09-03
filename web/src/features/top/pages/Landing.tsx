@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import AuthModal from '../../auth/components/AuthModal';
 
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";

@@ -5,14 +5,14 @@ interface LoginFormProps {
 	onClose: () => void;
 	onModeChange: (mode: AuthMode) => void;
 }
-const RegisterForm = ({ isOpen, onClose, mode, onModeChange }: LoginFormProps) => {
+const RegisterForm = ({ isOpen, onClose, onModeChange }: LoginFormProps) => {
 
 	return (
 		<>
 			<div
 				id="registerModal"
 				onClick={onClose}
-				className={`fixed inset-0 bg-brand-bg/80 backdrop-blur-sm z-[100] {isOpen ? 'flex' : 'hidden'} flex-col items-center justify-center p-4`}
+				className={`fixed inset-0 bg-brand-bg/80 backdrop-blur-sm z-[100] ${isOpen ? 'flex' : 'hidden'} flex-col items-center justify-center p-4`}
 			>
 
 				<div
