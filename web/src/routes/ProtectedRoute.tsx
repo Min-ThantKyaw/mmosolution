@@ -7,14 +7,14 @@ export default function ProtectedRoute({ allowedRoles }: { allowedRoles?: allowe
   const { user } = useAuth() || {};
   const location = useLocation();
 
-  if (!user) {
-    // Redirect to login page if user is not authenticated
-    return <Navigate to="/login" state={{ from: location }} replace />;
-  }
+  // if (!user) {
+  //   // Redirect to login page if user is not authenticated
+  //   return <Navigate to="/" state={{ from: location }} replace />;
+  // }
 
-  if (allowedRoles && !allowedRoles.includes(user.role as allowedRoles)) { 
-    return <Navigate to="/unauthorized" state={{ from: location }} replace />;
-  }
+  // if (allowedRoles && !allowedRoles.includes(user.role as allowedRoles)) { 
+  //   return <Navigate to="/unauthorized" state={{ from: location }} replace />;
+  // }
 
   return <Outlet />;
 }
