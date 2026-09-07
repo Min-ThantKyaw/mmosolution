@@ -5,7 +5,7 @@ interface LoginFormProps {
     onClose: () => void;
     onModeChange: (mode: AuthMode) => void;
 }
-const LoginForm = ({ isOpen, onClose, onModeChange }: LoginFormProps) => {
+const LoginForm = ({ onModeChange }: LoginFormProps) => {
 
     return (
         <>
