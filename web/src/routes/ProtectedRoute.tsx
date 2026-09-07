@@ -1,11 +1,19 @@
-import { Navigate, Outlet } from "react-router-dom";
-import { authStore } from "../store/auth.store";
+import { Navigate, Outlet, useLocation } from "react-router-dom";
+import { useAuth } from "../store/AuthProvider";
 
-export default function ProtectedRoute() {
-  const token = authStore.accessToken;
+type allowedRoles = "ADMIN" | "WRITER" | "USER";
 
-  if (!token) {
-    return <Navigate to="/login" replace />;
+export default function ProtectedRoute({ allowedRoles }: { allowedRoles?: allowedRoles[] }) {
+  const { user } = useAuth() || {};
+  const location = useLocation();
+
+  if (!user) {
+    // Redirect to login page if user is not authenticated
+    return <Navigate to="/login" state={{ from: location }} replace />;
+  }
+
+  if (allowedRoles && !allowedRoles.includes(user.role as allowedRoles)) { 
+    return <Navigate to="/unauthorized" state={{ from: location }} replace />;
   }
 
   return <Outlet />;
