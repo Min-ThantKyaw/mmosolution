@@ -11,12 +11,14 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Landing />} />
+        <Route path="/dashboard" element={<Home />} />
+        <Route path="/library" element={<Library />} />
       </Routes>
 
       <Routes>
         <Route element={<ProtectedRoute />}>
-          <Route path="/dashboard" element={<Home />} />
-          <Route path="/library" element={<Library />} />
+          {/* <Route path="/dashboard" element={<Home />} />
+          <Route path="/library" element={<Library />} /> */}
         </Route>
       </Routes>
 
