@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-// import axios from "axios";
+import axios from "axios";
 
 interface User {
 	id: number;
@@ -24,10 +24,10 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     
     const login = async (username: string, password: string): Promise<void> => {
         try {
-            // const response = await axios.post('http://localhost:3000/api/auth/login', { username, password });
-            // const { accessToken, ...userData } = response.data;
-            // setUser(userData);
-            // setToken(accessToken);
+            const response = await axios.post('http://localhost:3000/api/auth/login', { username, password });
+            const { accessToken, ...userData } = response.data;
+            setUser(userData);
+            setToken(accessToken);
         } catch (error) {
             console.error("Login failed:", error);
         }
