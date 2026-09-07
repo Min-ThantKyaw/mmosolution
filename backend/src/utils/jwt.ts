@@ -25,6 +25,16 @@ export const signToken = (payload: JwtPayload): string =>
     }
   );
 
+export const refreshToken = (payload: JwtPayload): string =>
+  jwt.sign(
+    payload,
+    JWT_SECRET!,
+    {
+      expiresIn: JWT_EXPIRES_IN,
+      algorithm: "HS256"
+    }
+  );
+
 
 export const verifyToken = (token: string): JwtPayload =>
   jwt.verify(

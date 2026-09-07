@@ -29,3 +29,4 @@ server/prisma/*.db-journal
 # Prisma 7 generated client (regenerated via `postinstall: prisma generate`)
 server/src/generated/
 .reasonix
+.commandcode

@@ -31,6 +31,7 @@ export const registerUser = async (
   });
 
   const accessToken = signToken({ userId: user.id, role: user.role });
+  const refreshToken = signToken({ userId: user.id, role: user.role });
 
   return {
     user: {
@@ -41,6 +42,7 @@ export const registerUser = async (
       role: user.role,
     },
     accessToken,
+    refreshToken,
   };
 };
 
@@ -74,6 +76,7 @@ export const loginUser = async (input: LoginInput): Promise<AuthResponse> => {
   }
 
   const accessToken = signToken({ userId: user.id, role: user.role });
+  const refreshToken = signToken({ userId: user.id, role: user.role });
 
   return {
     user: {
@@ -84,6 +87,7 @@ export const loginUser = async (input: LoginInput): Promise<AuthResponse> => {
       role: user.role,
     },
     accessToken,
+    refreshToken
   };
 };
 
