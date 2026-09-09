@@ -1,6 +1,6 @@
 import bcrypt from "bcryptjs";
 import prisma from "../config/database.js";
-import { signToken } from "../utils/jwt.js";
+import { signToken, refresh } from "../utils/jwt.js";
 import { HttpError } from "../utils/http-error.js";
 import type {
   RegisterInput,
@@ -31,7 +31,7 @@ export const registerUser = async (
   });
 
   const accessToken = signToken({ userId: user.id, role: user.role });
-  const refreshToken = signToken({ userId: user.id, role: user.role });
+  const refreshToken = refresh({ userId: user.id, role: user.role });
 
   return {
     user: {
@@ -76,7 +76,7 @@ export const loginUser = async (input: LoginInput): Promise<AuthResponse> => {
   }
 
   const accessToken = signToken({ userId: user.id, role: user.role });
-  const refreshToken = signToken({ userId: user.id, role: user.role });
+  const refreshToken = refresh({ userId: user.id, role: user.role });
 
   return {
     user: {

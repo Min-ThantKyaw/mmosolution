@@ -2,6 +2,8 @@ import jwt from "jsonwebtoken";
 
 const JWT_SECRET = process.env.JWT_SECRET;
 const JWT_EXPIRES_IN = parseInt(process.env.JWT_EXPIRES_IN || '3600');
+const JWT_REFRESH_SECRET = process.env.JWT_REFRESH_SECRET;
+const JWT_REFRESH_EXPIRES_IN = parseInt(process.env.JWT_REFRESH_EXPIRES_IN || '604800');
 
 console.log(JWT_EXPIRES_IN)
 
@@ -25,12 +27,12 @@ export const signToken = (payload: JwtPayload): string =>
     }
   );
 
-export const refreshToken = (payload: JwtPayload): string =>
+export const refresh = (payload: JwtPayload): string =>
   jwt.sign(
     payload,
-    JWT_SECRET!,
+    JWT_REFRESH_SECRET!,
     {
-      expiresIn: JWT_EXPIRES_IN,
+      expiresIn: JWT_REFRESH_EXPIRES_IN,
       algorithm: "HS256"
     }
   );
