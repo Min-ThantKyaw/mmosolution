@@ -1,30 +1,67 @@
+import React from "react";
+import { useState } from "react";
+import { registerUser } from "../api/api.auth";
+import type { RegisterResponse, RegisterRequest } from "../auth.types";
+import { useNavigate } from "react-router-dom";
 type AuthMode = 'login' | 'register';
-interface LoginFormProps {
+interface RegisterFormProps {
 	isOpen: boolean;
 	mode: 'login' | 'register';
 	onClose: () => void;
 	onModeChange: (mode: AuthMode) => void;
 }
-const RegisterForm = ({ onModeChange }: LoginFormProps) => {
+const RegisterForm = ({ onModeChange }: RegisterFormProps) => {
+	const navigate = useNavigate();
+	const [formData, setFormData] = useState<RegisterRequest>({
+		name: '',
+		username: '',
+		email: '',
+		password: ''
+	});
+
+	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => { 
+		const { name, value } = e.target;
+		setFormData(prevState => ({
+			...prevState,
+			[name]: value
+		}));
+	};
+
+	const handleRegister = async (e: React.FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
+		try {
+			const result = await registerUser(formData);
+			if (result) {
+				navigate('/dashboard', { replace: true });
+			}
+		} catch (error) {
+			console.error("Error registering user:", error);
+		}
+	};
 
 	return (
 		<>
-			<form action="#" method="POST" className="space-y-5">
+			<form action="#" method="POST" className="space-y-5" onSubmit={handleRegister}>
+				<div>
+					<label className="block text-sm font-medium mb-1">Name</label>
+					<input type="text" value={formData.name} onChange={handleChange} name="name" placeholder="Enter your name"
+						className="w-full px-4 py-2 bg-brand-bg border border-brand rounded-none text-brand-text font-sans focus-ring transition-colors" />
+				</div>
 				<div>
 					<label className="block text-sm font-medium mb-1">Username</label>
-					<input type="text" id="username" name="username" required placeholder="Enter your username"
+					<input type="text" value={formData.username} onChange={handleChange} name="username" required placeholder="Enter your username"
 						className="w-full px-4 py-2 bg-brand-bg border border-brand rounded-none text-brand-text font-sans focus-ring transition-colors" />
 				</div>
 
 				<div>
 					<label className="block text-sm font-medium mb-1">Email address</label>
-					<input type="email" id="email" name="email" required placeholder="you@example.com"
+					<input type="email" value={formData.email} onChange={handleChange} name="email" required placeholder="you@example.com"
 						className="w-full px-4 py-2 bg-brand-bg border border-brand rounded-none text-brand-text font-sans focus-ring transition-colors" />
 				</div>
 
 				<div>
 					<label className="block text-sm font-medium mb-1">Password</label>
-					<input type="password" id="password" name="password" required placeholder="••••••••"
+					<input type="password" value={formData.password} onChange={handleChange} name="password" required placeholder="••••••••"
 						className="w-full px-4 py-2 bg-brand-bg border border-brand rounded-none text-brand-text font-sans focus-ring transition-colors" />
 				</div>
 
