@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -9,6 +9,8 @@ type AuthForm = 'login' | 'register';
 const Landing = () => {
 	const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
 	const [activeAuthForm, setActiveAuthForm] = useState<AuthForm>('login');
+	const [data, setData] = useState<string | null>(null);
+
 
 	const openLogin = () => {
 		setActiveAuthForm('login');
