@@ -1,5 +1,6 @@
 import LoginForm from "./LoginForm";
 import RegisterForm from "./RegisterForm";
+import GoogleLogin from "./GoogleLogin";
 
 type AuthMode = 'login' | 'register';
 type AuthModalProps = {
@@ -22,7 +23,7 @@ const AuthModal = ({ isOpen, onClose, mode, onModeChange }: AuthModalProps) => {
                 <div
                     onClick={(e) => e.stopPropagation()}
 
-                    className="w-full max-w-md bg-white border border-brand p-8 md:p-10 shadow-2xl relative animate-fade-in">
+                    className="w-full max-w-md bg-white border border-brand p-8 md:p-10 rounded-lg shadow-2xl relative animate-fade-in">
                     <button
                         onClick={onClose}
                         className="absolute top-3 right-5 text-4xl font-light text-brand-text/40 hover:text-brand-text leading-none transition-colors"
@@ -53,6 +54,7 @@ const AuthModal = ({ isOpen, onClose, mode, onModeChange }: AuthModalProps) => {
                             onModeChange={onModeChange}
                         />
                     }
+                    <GoogleLogin />
                 </div>
             </div>
 
